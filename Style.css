@@ -1,0 +1,12 @@
+.container-custom{
+    padding-top: 25px;
+    max-width: 750px;
+}
+
+.container-general{
+    background-color: #b8b1b1;
+}
+
+.container-form{
+    background-color: #ffffff;
+}

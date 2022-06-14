@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container-general">
+        <div class="container-fluid container-custom">
+            <h2>Listado de personajes</h2>
+            <div id="alertSections">
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="visually-hidden" for="autoSizingInputGroup">Buscar..</label>
+                    <div class="input-group">
+                        <div class="input-group-text"><i class="bi bi-search"></i></div>
+                        <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="busqueda..">
+                    </div>
+                </div>
+                <div class="col-md-2 ms-auto">
+                    <button class=" btn btn-primary" type="submit" onclick=mostrarContainer(event)><i
+                            class="bi bi-plus"></i>nuevo</button>
+                </div>
+            </div>
+            <br>
+            <!-- form -->
+            <div id="formContain" class="container-form p-3 d-none">
+                <form class="row g-3" id="formsSubmit">
+                    <h2 class="text-center">Personaje nuevo</h2>
+                    <input type="hidden" name="id" id="id">
+                    <div class="row g-3 align-items-center offset-md-3">
+                        <div class="col-md-2 col-auto">
+                            <label for=" name" class="form-label">Nombre</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" aria-describedby="invaliName" id="name"
+                                placeholder="Nombre...." required>
+                            <div class="valid-feedback">
+                                Campo correcto!
+                            </div>
+                            <div id="invaliName" class="invalid-feedback">
+                                El nombre esta vacio!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- is-invalid -->
+                    <div class="row g-3 align-items-center offset-md-3">
+                        <div class="col-md-2 col-auto">
+                            <label for="description" class="form-label">Descripcion</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" aria-describedby="invaliDescription"
+                                id="description" placeholder="Descripcion....." required>
+                            <div class="valid-feedback">
+                                Campo correcto!
+                            </div>
+                            <div id="invaliDescription" class="invalid-feedback">
+                                La descripcion esta vacia!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3 align-items-center offset-md-3">
+                        <div class="col-md-2 col-auto">
+                            <label for="image" class="form-label">Imagen</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" aria-describedby="invalidImage" class="form-control" id="image"
+                                placeholder="https://www.google.com" required>
+                            <div id="invalidImage" class="invalid-feedback">
+                                Ingrese la URL de la imagen!
+                            </div>
+                            <div class="valid-feedback">
+                                Campo imagen correcta!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3 align-items-center offset-md-3">
+                        <div class="col-md-3 col-auto">
+                            <button class=" btn btn-danger m-1" type="submit" onclick=guardarSubmit(event)><i
+                                    class="bi bi-save"></i>Guardar
+                            </button>
+                        </div>
+                        <div class="col-auto">
+                            <button class=" btn btn-danger m-1" type="submit" onclick=cancelarSubmit(event)><i
+                                    class="bi bi-x"></i>Cancelar
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div id="container-group">
+
+            </div>
+        </div>
+
+        <br>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="index.js"></script>
+    </div>
+    </div>
+</body>
+
+</html>
