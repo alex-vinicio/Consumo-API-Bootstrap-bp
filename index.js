@@ -1,5 +1,5 @@
 const apiURL = "https://bp-marvel-api.herokuapp.com/marvel-characters";
-
+//muestra img por defecto en una imagen sin valor de API => onerror="this.src='https://via.placeholder.com/150'"
 window.addEventListener("DOMContentLoaded", function (event) {
   var busquedaInput = document.querySelector("#autoSizingInputGroup");
   //change -> active in key space down
@@ -7,7 +7,19 @@ window.addEventListener("DOMContentLoaded", function (event) {
     busquedaSegunInput(event.target.value);
   });
   setTodoList();
+
+  ejemploConsultaLocal();
 });
+async function ejemploConsultaLocal() {
+  var jsonList = await listaConsulta().then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
+}
+
+function listaConsulta() {
+  return axios.get("http://localhost:8081/api/bp/usuario", {});
+}
 
 async function busquedaSegunInput(valorInput) {
   var jsonList = [];
@@ -24,6 +36,7 @@ async function busquedaPersonaje(valueFind, tipoBusqueda) {
   //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   var jsonList = [];
   response.forEach((element) => {
+    //cambiar foreach por filter -> .some metodp de busqueda y recorrido
     if (tipoBusqueda == 1) {
       if (element.title.toLowerCase().includes(valueFind.toLowerCase())) {
         jsonList.push(element);
@@ -48,7 +61,7 @@ function reloadList(divContainer, jsonList) {
                     <div class="row g-0">
                         <div class="col-3 p-1 align-self-center">
                             <div class="border border-2 rounded-1 border-danger">
-                                <img src="${element.image}"
+                                <img src="${element.image}" onerror="this.src='https://via.placeholder.com/150'"  
                                     class="img-fluid rounded-start" >
                             </div>
                         </div>
@@ -75,6 +88,7 @@ function reloadList(divContainer, jsonList) {
     divContainer.innerHTML = divContainer.innerHTML + generateContent;
   });
 }
+//listado general de personajes
 const setTodoList = async () => {
   var jsonList = await getForIdAuthor(1).then((response) => {
     return response.data;
